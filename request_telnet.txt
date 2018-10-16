@@ -1,0 +1,80 @@
+telnet localhost 88
+
+GET / HTTP/1.1
+Host: quack.image.com
+Connection: keep-alive
+
+HTTP/1.1 200 OK
+Server: nginx/1.14.0 (Ubuntu)
+Date: Tue, 16 Oct 2018 01:45:33 GMT
+Content-Type: text/html
+Content-Length: 380
+Last-Modified: Tue, 16 Oct 2018 01:38:52 GMT
+Connection: keep-alive
+ETag: "5bc5412c-17c"
+Accept-Ranges: bytes
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Quack</title>
+</head>
+<bode>
+	<h1>Quack</h1>
+	<img src="/img/google.png">
+	<h1><a href="/gunicorned">Go to gunicorn</a></h1>
+	<!-- <form action="https://duckduckgo.com/">
+		<input type="text" name="q" value="">
+		<input type="hidden" name="ia" value="images">
+		<button type="submit">Найти</button>
+	</form> -->
+
+</bode>
+</html>
+
+
+
+
+
+UNKNOWN / HTTP/1.1
+Host: quack.image.com
+  
+HTTP/1.1 405 Not Allowed
+Server: nginx/1.14.0 (Ubuntu)
+Date: Tue, 16 Oct 2018 01:46:43 GMT
+Content-Type: text/html
+Content-Length: 182
+Connection: keep-alive
+
+<html>
+<head><title>405 Not Allowed</title></head>
+<body bgcolor="white">
+<center><h1>405 Not Allowed</h1></center>
+<hr><center>nginx/1.14.0 (Ubuntu)</center>
+</body>
+</html>
+
+
+
+
+
+POST http://127.0.0.1:88/ HTTP/1.1
+Host: quack.site.com
+Content-Length: 10
+Connection: keep-alive
+
+HTTP/1.1 405 Not Allowed
+Server: nginx/1.14.0 (Ubuntu)
+Date: Tue, 16 Oct 2018 01:52:51 GMT
+Content-Type: text/html
+Content-Length: 182
+Connection: keep-alive
+
+<html>
+<head><title>405 Not Allowed</title></head>
+<body bgcolor="white">
+<center><h1>405 Not Allowed</h1></center>
+<hr><center>nginx/1.14.0 (Ubuntu)</center>
+</body>
+</html>
+

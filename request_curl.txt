@@ -1,0 +1,12 @@
+curl http://localhost:88/gunicorned/
+
+    <html>
+    <head>
+    <meta charset="utf-8">
+    <title>Boba Feta</title>
+    </head>
+    <body>
+    <h1>Hello, Gunicorn!</h1>
+    </body>
+    </html>
+
