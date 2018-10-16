@@ -1,0 +1,302 @@
+Первыйзапуск на 5000 запросов без keep-alive
+
+ab -n 5000 localhost:88/
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 500 requests
+Completed 1000 requests
+Completed 1500 requests
+Completed 2000 requests
+Completed 2500 requests
+Completed 3000 requests
+Completed 3500 requests
+Completed 4000 requests
+Completed 4500 requests
+Completed 5000 requests
+Finished 5000 requests
+
+
+Server Software:        nginx/1.14.0
+Server Hostname:        localhost
+Server Port:            88
+
+Document Path:          /
+Document Length:        379 bytes
+
+Concurrency Level:      1
+Time taken for tests:   1.143 seconds
+Complete requests:      5000
+Failed requests:        0
+Total transferred:      3105000 bytes
+HTML transferred:       1895000 bytes
+Requests per second:    4376.16 [#/sec] (mean)
+Time per request:       0.229 [ms] (mean)
+Time per request:       0.229 [ms] (mean, across all concurrent requests)
+Transfer rate:          2653.90 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:     0    0   0.0      0       1
+Waiting:        0    0   0.0      0       1
+Total:          0    0   0.0      0       1
+
+Percentage of the requests served within a certain time (ms)
+  50%      0
+  66%      0
+  75%      0
+  80%      0
+  90%      0
+  95%      0
+  98%      0
+  99%      0
+ 100%      1 (longest request)
+
+
+
+
+
+Тоже c keep-alive
+
+ab -n 5000 -k localhost:88/
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 500 requests
+Completed 1000 requests
+Completed 1500 requests
+Completed 2000 requests
+Completed 2500 requests
+Completed 3000 requests
+Completed 3500 requests
+Completed 4000 requests
+Completed 4500 requests
+Completed 5000 requests
+Finished 5000 requests
+
+
+Server Software:        nginx/1.14.0
+Server Hostname:        localhost
+Server Port:            88
+
+Document Path:          /
+Document Length:        379 bytes
+
+Concurrency Level:      1
+Time taken for tests:   0.534 seconds
+Complete requests:      5000
+Failed requests:        0
+Keep-Alive requests:    4950
+Total transferred:      3129750 bytes
+HTML transferred:       1895000 bytes
+Requests per second:    9354.97 [#/sec] (mean)
+Time per request:       0.107 [ms] (mean)
+Time per request:       0.107 [ms] (mean, across all concurrent requests)
+Transfer rate:          5718.50 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:     0    0   0.0      0       1
+Waiting:        0    0   0.0      0       1
+Total:          0    0   0.0      0       1
+
+Percentage of the requests served within a certain time (ms)
+  50%      0
+  66%      0
+  75%      0
+  80%      0
+  90%      0
+  95%      0
+  98%      0
+  99%      0
+ 100%      1 (longest request)
+
+
+
+Тест guicorn
+
+ab -n 5000 -k localhost:88/gunicorn/
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 500 requests
+Completed 1000 requests
+Completed 1500 requests
+Completed 2000 requests
+Completed 2500 requests
+Completed 3000 requests
+Completed 3500 requests
+Completed 4000 requests
+Completed 4500 requests
+Completed 5000 requests
+Finished 5000 requests
+
+
+Server Software:        nginx/1.14.0
+Server Hostname:        localhost
+Server Port:            88
+
+Document Path:          /gunicorn/
+Document Length:        178 bytes
+
+Concurrency Level:      1
+Time taken for tests:   0.525 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Keep-Alive requests:    4950
+Total transferred:      1709750 bytes
+HTML transferred:       890000 bytes
+Requests per second:    9523.83 [#/sec] (mean)
+Time per request:       0.105 [ms] (mean)
+Time per request:       0.105 [ms] (mean, across all concurrent requests)
+Transfer rate:          3180.34 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:     0    0   0.0      0       1
+Waiting:        0    0   0.0      0       1
+Total:          0    0   0.0      0       1
+
+Percentage of the requests served within a certain time (ms)
+  50%      0
+  66%      0
+  75%      0
+  80%      0
+  90%      0
+  95%      0
+  98%      0
+  99%      0
+ 100%      1 (longest request)
+
+
+
+
+
+ab -n 5000 -k -c 4 localhost:88/gunicorn/
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 500 requests
+Completed 1000 requests
+Completed 1500 requests
+Completed 2000 requests
+Completed 2500 requests
+Completed 3000 requests
+Completed 3500 requests
+Completed 4000 requests
+Completed 4500 requests
+Completed 5000 requests
+Finished 5000 requests
+
+
+Server Software:        nginx/1.14.0
+Server Hostname:        localhost
+Server Port:            88
+
+Document Path:          /gunicorn/
+Document Length:        178 bytes
+
+Concurrency Level:      4
+Time taken for tests:   0.217 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Keep-Alive requests:    4953
+Total transferred:      1709765 bytes
+HTML transferred:       890000 bytes
+Requests per second:    23062.20 [#/sec] (mean)
+Time per request:       0.173 [ms] (mean)
+Time per request:       0.043 [ms] (mean, across all concurrent requests)
+Transfer rate:          7701.36 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:     0    0   0.1      0       7
+Waiting:        0    0   0.1      0       7
+Total:          0    0   0.1      0       7
+
+Percentage of the requests served within a certain time (ms)
+  50%      0
+  66%      0
+  75%      0
+  80%      0
+  90%      0
+  95%      0
+  98%      0
+  99%      0
+ 100%      7 (longest request)
+
+
+
+
+
+ab -n 5000 -k -c 8 localhost:88/gunicorn/
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 500 requests
+Completed 1000 requests
+Completed 1500 requests
+Completed 2000 requests
+Completed 2500 requests
+Completed 3000 requests
+Completed 3500 requests
+Completed 4000 requests
+Completed 4500 requests
+Completed 5000 requests
+Finished 5000 requests
+
+
+Server Software:        nginx/1.14.0
+Server Hostname:        localhost
+Server Port:            88
+
+Document Path:          /gunicorn/
+Document Length:        178 bytes
+
+Concurrency Level:      8
+Time taken for tests:   0.185 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Keep-Alive requests:    4953
+Total transferred:      1709765 bytes
+HTML transferred:       890000 bytes
+Requests per second:    27035.80 [#/sec] (mean)
+Time per request:       0.296 [ms] (mean)
+Time per request:       0.037 [ms] (mean, across all concurrent requests)
+Transfer rate:          9028.29 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       1
+Processing:     0    0   0.2      0       8
+Waiting:        0    0   0.2      0       8
+Total:          0    0   0.2      0       8
+
+Percentage of the requests served within a certain time (ms)
+  50%      0
+  66%      0
+  75%      0
+  80%      0
+  90%      0
+  95%      1
+  98%      1
+  99%      1
+ 100%      8 (longest request)
+
