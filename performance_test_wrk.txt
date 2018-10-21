@@ -1,13 +1,9 @@
-wrk -t4 -c40 -d3s http://127.0.0.1:88/gunicorn
-
-Running 3s test @ http://127.0.0.1:88/gunicorn
+wrk -t4 -c40 -d3s http://127.0.0.1:88/gunicorned
+Running 3s test @ http://127.0.0.1:88/gunicorned
   4 threads and 40 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     1.18ms    1.44ms  21.63ms   88.38%
-    Req/Sec    11.14k     3.47k   24.90k    75.83%
-  133327 requests in 3.01s, 43.48MB read
-  Non-2xx or 3xx responses: 133327
-Requests/sec:  44227.36
-Transfer/sec:     14.42MB
-
-
+    Latency    26.72ms    4.73ms  46.63ms   79.41%
+    Req/Sec   374.36     69.78     1.06k    97.52%
+  4512 requests in 3.10s, 0.91MB read
+Requests/sec:   1455.93
+Transfer/sec:    299.94KB
